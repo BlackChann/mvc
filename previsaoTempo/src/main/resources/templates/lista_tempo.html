@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Previsao do tempo</title>
+<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+	rel="stylesheet" />
+<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}"
+	rel="stylesheet" />
+</head>
+<body>
+	<div class="panel panel-default" style="margin: 10px">
+		<div class="panel-heading">
+			<h1 class="panel-title">Previsão do Tempo</h1>
+		</div>
+		<div class="panel-body">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Cidade</th>
+						<th>Dia da Semana</th>
+						<th>Temperatura mínima</th>
+						<th>Temperatura máxima</th>
+						<th>Umidade Relativa do Ar</th>
+						<th>Descrição</th>
+					</tr>
+				</thead>
+				<tbody>
+				
+				<tr th:each="tempo : ${tempos}">
+							<td th:text="${tempo.cidade}"></td>
+							<td th:text="${tempo.dia}"></td>
+							<td th:text="${tempo.tempMin}"></td>
+							<td th:text="${tempo.tempMax}"></td>
+							<td th:text="${tempo.umidade}"></td>
+							<td th:text="${tempo.descricao}"></td>
+				</tr>
+				
+				<form class="form-inline" method="POST" th:object="${tempos}" th:action="@{/tempo}" style="margin:20px 0">
+						<div class="form-group">
+					
+							<input type="text" class="form-control" placeholder="cidade"/>
+							<input type="text" class="form-control" placeholder="dia"/>
+							<input type="text" class="form-control" placeholder="tempMin"/>
+							<input type="text" class="form-control" placeholder="tempMax"/>
+							<input type="text" class="form-control" placeholder="umidade"/>
+							<input type="text" class="form-control" placeholder="descricao"/>
+							
+					<button type="submit" class="btn btn-primary">Adicionar</button>
+					
+						</div>
+					</form>
+					
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>
