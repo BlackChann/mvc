@@ -25,6 +25,10 @@
 						<th>Temperatura máxima</th>
 						<th>Umidade Relativa do Ar</th>
 						<th>Descrição</th>
+						
+						<th>Data e hora</th>
+						<th>latitude</th>
+						<th>longitude</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -36,6 +40,10 @@
 							<td th:text="${tempo.tempMax}"></td>
 							<td th:text="${tempo.umidade}"></td>
 							<td th:text="${tempo.descricao}"></td>
+							
+							<td th:text="${tempo.dataHora}"></td>
+							<td th:text="${tempo.latitude}"></td>
+							<td th:text="${tempo.longitude}"></td>
 				</tr>
 				
 				<form class="form-inline" method="POST" th:object="${tempos}" th:action="@{/tempo}" style="margin:20px 0">
@@ -47,6 +55,9 @@
 							<input type="text" class="form-control" placeholder="tempMax"/>
 							<input type="text" class="form-control" placeholder="umidade"/>
 							<input type="text" class="form-control" placeholder="descricao"/>
+							<input type="text" class="form-control" placeholder="dataHora"/>
+							<input type="text" class="form-control" placeholder="latitude"/>
+							<input type="text" class="form-control" placeholder="longitude"/>
 							
 					<button type="submit" class="btn btn-primary">Adicionar</button>
 					
